@@ -1,0 +1,16 @@
+## API 6 - Query
+
+  SELECT tweet_id, tweet,
+  (SELECT COUNT() FROM like WHERE tweet_id = 8),
+  date_time AS dateTime
+  FROM user u INNER JOIN follower f
+  INNER JOIN tweet t
+  ON u.user_id = f.follower_user_id AND f.following_user_id = t.user_id
+  WHERE u.username = '${username}' AND tweet_id = ${tweetId};
+  
+
+  //AND f.following_user_id = t.user_id
+  // AND t.tweet_id = ${tweetId}
+  //(SELECT tweet_id  FROM tweet WHERE tweet_id = ${tweetId})
+ 
+ 
